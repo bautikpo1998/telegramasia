@@ -8,11 +8,15 @@ telegram_models = {
     "suspension": "Rechazo la suspensión impuesta el FECHA por maliciosa e improcedente. Desconozco los hechos referenciados y responsabilizo a la empresa por los salarios caídos. Reservo derechos."
 }
 
+@app.route('/')
+def home():
+    return "API de Telegramas Laborales funcionando correctamente!", 200
+
 @app.route('/consulta', methods=['POST'])
 def consulta():
     data = request.json
-    tipo = data.get("tipo")
-    fecha = data.get("fecha", "FECHA")
+    tipo = data.get("tipo")  # Tipo de telegrama solicitado
+    fecha = data.get("fecha", "FECHA")  # Fecha proporcionada
     
     if tipo in telegram_models:
         telegrama = telegram_models[tipo].replace("FECHA", fecha)
