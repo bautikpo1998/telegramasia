@@ -33,4 +33,4 @@ def actualizar_modelo():
         return jsonify({"error": "Datos insuficientes"}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
